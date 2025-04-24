@@ -5,7 +5,26 @@ let buttonElement = document.querySelector("#app button");
 
 // array para armazenar tarefas
 let tarefas = [];
+// Função para renderizar as tarefas em tela
+function renderTarefas() {
+  listElement.innerHTML = "";
 
+  tarefas.map((todo) => {
+    let liElement = document.createElement("li");
+    let tarefaText = document.createTextNode(todo);
+
+    let linkElement = document.createElement("a");
+    linkElement.setAttribute("href", "#");
+    let linkText = document.createTextNode("Excluir");
+    linkElement.appendChild(linkText);
+    
+
+
+    liElement.appendChild(tarefaText);
+    liElement.appendChild(linkElement);
+    listElement.appendChild(liElement);
+  });
+}
 // função para adicionar tarefas
 function addTarefas() {
   if (inputElement.value === "") {
@@ -13,9 +32,15 @@ function addTarefas() {
   } else {
     let novaTarefa = inputElement.value;
     tarefas.push(novaTarefa);
-    // limpeza do campo input
+    // limpa o campo input
     inputElement.value = "";
+
+    // chamada para função para renderizar as tarefas em tela
+    renderTarefas();
   }
 }
 // adicionando evento no botão registrar
 buttonElement.onclick = addTarefas;
+
+
+
