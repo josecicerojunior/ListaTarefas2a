@@ -18,8 +18,11 @@ function renderTarefas() {
     let linkText = document.createTextNode("Excluir");
     linkElement.appendChild(linkText);
     
+  
 
+    linkElement.setAttribute("onclick",  "deletarTarefas()")
 
+    
     liElement.appendChild(tarefaText);
     liElement.appendChild(linkElement);
     listElement.appendChild(liElement);
@@ -42,5 +45,8 @@ function addTarefas() {
 // adicionando evento no botão registrar
 buttonElement.onclick = addTarefas;
 
+function deletarTarefas(){
+  alert("Deletando tarefa!!!")
+}
 
 
